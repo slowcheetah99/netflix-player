@@ -17,6 +17,7 @@ import {
   Picture,
   Dropdown,
   Profile,
+  LogoutLink,
 } from "./styles/header";
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -101,4 +102,8 @@ Header.Picture = function HeaderPicture({ src, ...restProps }) {
 
 Header.Profile = function HeaderProfile({ children, ...restProps }) {
   return <Profile {...restProps}>{children}</Profile>;
+};
+
+Header.LogoutLink = function HeaderLogoutLink({ children, ...restProps }) {
+  return <LogoutLink {...restProps}>{children}</LogoutLink>;
 };

@@ -15,7 +15,7 @@ export function BrowseContainer({ slides }) {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [slideRows, setSlideRows] = useState([]);
-  const userInfo = firebase.auth().currentUser;
+  // const userInfo = firebase.auth().currentUser;
 
   useEffect(() => {
     setSlideRows(slides[category]);
@@ -31,10 +31,14 @@ export function BrowseContainer({ slides }) {
     }
     return setSlideRows(slides[category]);
   }, [searchTerm]);
+
+  async function handleSignOut(e) {
+    e.preventDefault();
+    await firebase.auth().signOut();
+  }
   //replace user below with userInfo after completing the project
   return user ? (
     <>
-      {console.log("in profile")}
       <Header src="joker1" dontShowOnSmallViewport>
         <Header.Frame>
           <Header.Group>
@@ -69,9 +73,7 @@ export function BrowseContainer({ slides }) {
                   <Header.Link>{user.displayName}</Header.Link>
                 </Header.Group>
                 <Header.Group>
-                  <Header.Link onClick={() => firebase.auth().signOut}>
-                    Sign out
-                  </Header.Link>
+                  <Header.Link onClick={handleSignOut}>Sign out</Header.Link>
                 </Header.Group>
               </Header.Dropdown>
             </Header.Profile>
