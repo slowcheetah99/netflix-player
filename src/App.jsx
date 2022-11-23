@@ -5,6 +5,8 @@ import { GlobalStyles } from "./globalStyles";
 import { UserProvider } from "./context/userContext";
 import { useAuthListener } from "./hooks";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
+import { Browse, Home } from "./pages";
+import { useEffect } from "react";
 
 function App() {
   const { user } = useAuthListener();
@@ -15,6 +17,28 @@ function App() {
         <div className="App">
           <Routes>
             <Route
+              path={ROUTES.SIGN_UP}
+              element={<IsUserRedirect user={user} />}
+            />
+            <Route
+              path={ROUTES.SIGN_IN}
+              element={<IsUserRedirect user={user} />}
+            />
+            <Route element={<ProtectedRoute user={user} />}>
+              <Route path={ROUTES.BROWSE} element={<Browse />} />
+              <Route path={ROUTES.HOME} element={<Home />} />
+            </Route>
+          </Routes>
+        </div>
+      </UserProvider>
+    </Router>
+  );
+}
+
+export default App;
+
+{
+  /* <Route
               path={ROUTES.SIGN_IN}
               element={
                 <IsUserRedirect
@@ -23,8 +47,10 @@ function App() {
                   path={ROUTES.SIGN_IN}
                 />
               }
-            />
-            <Route
+            /> */
+}
+{
+  /* <Route
               path={ROUTES.SIGN_UP}
               element={
                 <IsUserRedirect
@@ -33,8 +59,11 @@ function App() {
                   path={ROUTES.SIGN_UP}
                 />
               }
-            />
-            <Route
+            /> */
+}
+
+{
+  /* <Route
               path={ROUTES.BROWSE}
               element={<ProtectedRoute user={user} path={ROUTES.BROWSE} />}
             />
@@ -47,12 +76,5 @@ function App() {
                   path={ROUTES.HOME}
                 />
               }
-            />
-          </Routes>
-        </div>
-      </UserProvider>
-    </Router>
-  );
+            /> */
 }
-
-export default App;

@@ -67,6 +67,24 @@ export const ButtonLink = styled(ReachRouterLink)`
   }
 `;
 
+export const LogoutLink = styled.button`
+  display: block;
+  background-color: #e50914;
+  width: fit-content;
+  height: fit-content;
+  color: #fff;
+  border: 0;
+  font-size: 15px;
+  padding: 8px 17px;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  &:hover {
+    background: #f40612;
+  }
+`;
+
 export const Logo = styled.img`
   height: 32px;
   width: 100px;
