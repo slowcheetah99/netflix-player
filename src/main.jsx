@@ -5,6 +5,7 @@ import "./index.css";
 import { FirebaseContext } from "./context/firebase";
 //importing the function
 // import { seedDatabase } from "./seed";
+import { BrowserRouter as Router } from "react-router-dom";
 
 const config = {
   apiKey: import.meta.env.VITE_FIREBASE_KEY,
@@ -23,7 +24,9 @@ const firebase = window.firebase.initializeApp(config);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <FirebaseContext.Provider value={{ firebase: window.firebase }}>
-      <App />
+      <Router>
+        <App />
+      </Router>
     </FirebaseContext.Provider>
   </React.StrictMode>
 );

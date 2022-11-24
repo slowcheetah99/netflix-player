@@ -6,16 +6,30 @@ import { UserProvider } from "./context/userContext";
 import { useAuthListener } from "./hooks";
 import { IsUserRedirect, ProtectedRoute } from "./helpers/routes";
 import { Browse, Home } from "./pages";
-import { useEffect } from "react";
-
+import { AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Loader } from "./components";
 function App() {
   const { user } = useAuthListener();
+  const location = useLocation();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) return <Loader />;
+
   return (
-    <Router>
+    <>
       <GlobalStyles />
       <UserProvider>
-        <div className="App">
-          <Routes>
+        <AnimatePresence initial={false} mode="wait">
+          <Routes location={location} key={location.pathname}>
             <Route
               path={ROUTES.SIGN_UP}
               element={<IsUserRedirect user={user} />}
@@ -29,9 +43,9 @@ function App() {
               <Route path={ROUTES.HOME} element={<Home />} />
             </Route>
           </Routes>
-        </div>
+        </AnimatePresence>
       </UserProvider>
-    </Router>
+    </>
   );
 }
 

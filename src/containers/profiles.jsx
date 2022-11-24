@@ -1,15 +1,12 @@
 import { Header, Profiles } from "../components";
 import * as ROUTES from "../constants/routes";
+import logo from "/images/misc/logo.svg";
 export function SelectProfileContainer({ user, setProfile }) {
   return user.displayName ? (
     <>
       <Header>
         <Header.Frame>
-          <Header.Logo
-            to={ROUTES.HOME}
-            src="/images/misc/logo.svg"
-            alt="Netflix Home"
-          />
+          <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix Home" />
         </Header.Frame>
       </Header>
       <Profiles>

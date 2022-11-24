@@ -7,6 +7,7 @@ import {
   Picture,
   Name,
 } from "./styles/profiles";
+import loader from "/images/misc/loading.gif";
 export default function Profiles({ children, ...restProps }) {
   return <Container {...restProps}>{children}</Container>;
 }
@@ -29,10 +30,7 @@ Profiles.User = function ProfilesUser({ children, ...restProps }) {
 
 Profiles.Picture = function ProfilesPicture({ src, ...restProps }) {
   return (
-    <Picture
-      {...restProps}
-      src={src ? `/images/users/${src}.png` : "/images/misc/loading.gif"}
-    />
+    <Picture {...restProps} src={src ? `/images/users/${src}.png` : loader} />
   );
 };
 

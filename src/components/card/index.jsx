@@ -1,4 +1,5 @@
 import { useState, useContext, createContext } from "react";
+import closeIcon from "/images/icons/close.png";
 import {
   Container,
   Group,
@@ -84,7 +85,7 @@ Card.Feature = function CardFeature({ category, children, ...restProps }) {
         <FeatureTitle>{itemFeature.title}</FeatureTitle>
         <FeatureText>{itemFeature.description}</FeatureText>
         <FeatureClose onClick={() => setShowFeature(false)}>
-          <img src={"/images/icons/close.png"} alt="close feature" />
+          <img src={closeIcon} alt="close feature" />
         </FeatureClose>
         <Group margin="30px 0" flexDirection="row" alignItems="center">
           <Maturity rating={itemFeature.maturity}>

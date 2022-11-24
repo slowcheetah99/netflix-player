@@ -4,6 +4,7 @@ import { useAuthListener } from "../hooks";
 import { FirebaseContext } from "../context/firebase";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "/images/misc/logo.svg";
 export function HeaderContainer({ children }) {
   const { user } = useAuthListener();
   const { firebase } = useContext(FirebaseContext);
@@ -17,7 +18,7 @@ export function HeaderContainer({ children }) {
   return (
     <Header>
       <Header.Frame>
-        <Header.Logo to={ROUTES.HOME} src="/images/misc/logo.svg" alt="home" />
+        <Header.Logo to={ROUTES.HOME} src={logo} alt="home" />
         {!user ? (
           <Header.ButtonLink to={ROUTES.SIGN_IN}>Sign in</Header.ButtonLink>
         ) : (

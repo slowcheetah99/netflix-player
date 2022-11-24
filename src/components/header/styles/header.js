@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { Link as ReachRouterLink } from "react-router-dom";
-export const Background = styled.section`
+import bg from "/images/misc/home-bg.jpg";
+import { motion } from "framer-motion";
+export const Background = styled(motion.section)`
   display: flex;
   flex-direction: column;
-  background: url(${({ src }) =>
-    src ? `/images/misc/${src}.jpg` : "/images/misc/home-bg.jpg"});
+  background: url(${({ src }) => (src ? `/images/misc/${src}.jpg` : bg)});
 
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewport }) =>

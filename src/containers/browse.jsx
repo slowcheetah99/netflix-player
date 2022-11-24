@@ -6,13 +6,14 @@ import { Header, Card, Player } from "../components";
 import * as ROUTES from "../constants/routes";
 import { SelectProfileContainer } from "./profiles";
 import { FooterContainer } from "../containers/footer";
+import logo from "/images/misc/logo.svg";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 export function BrowseContainer({ slides }) {
   const { firebase } = useContext(FirebaseContext);
   // const userInfo = firebase.auth().currentUser;
   const { profile: user, setProfile } = useContext(UserContext);
   const [category, setCategory] = useState("series");
-  const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [slideRows, setSlideRows] = useState([]);
   // const userInfo = firebase.auth().currentUser;
@@ -32,6 +33,9 @@ export function BrowseContainer({ slides }) {
     return setSlideRows(slides[category]);
   }, [searchTerm]);
 
+  const { scrollYProgress } = useScroll();
+  let y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
+
   async function handleSignOut(e) {
     e.preventDefault();
     await firebase.auth().signOut();
@@ -39,14 +43,10 @@ export function BrowseContainer({ slides }) {
   //replace user below with userInfo after completing the project
   return user ? (
     <>
-      <Header src="joker1" dontShowOnSmallViewport>
+      <Header src="joker1" dontShowOnSmallViewport style={{ y }}>
         <Header.Frame>
           <Header.Group>
-            <Header.Logo
-              to={ROUTES.HOME}
-              src="/images/misc/logo.svg"
-              alt="Netflix Home"
-            />
+            <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix Home" />
             <Header.Link
               active={category === "series" ? "true" : "false"}
               onClick={() => setCategory("series")}

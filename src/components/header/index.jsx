@@ -1,5 +1,7 @@
 import { Link as ReachRouterLink } from "react-router-dom";
+import searchIcon from "/images/icons/search.png";
 import { useState } from "react";
+
 import {
   Background,
   Logo,
@@ -57,7 +59,7 @@ Header.Search = function HeaderSearch({
   return (
     <Search {...restProps}>
       <SearchIcon onClick={() => setSearchActive(!searchActive)}>
-        <img src="/images/icons/search.png" alt="search icon" />
+        <img src={searchIcon} alt="search icon" />
       </SearchIcon>
       <SearchInput
         placeholder="search films, movies and series"

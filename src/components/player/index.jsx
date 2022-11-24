@@ -1,7 +1,7 @@
 import { useState, useContext, createContext } from "react";
 import { Button, Overlay, Inner, Container, Close } from "./styles/player";
 import ReactDOM from "react-dom";
-
+import bunny from "/videos/bunny.mp4";
 export const PlayerContext = createContext();
 
 export default function Player({ children, ...restProps }) {
@@ -29,7 +29,7 @@ Player.Video = function PlayerVideo({ children, ...restProps }) {
         <Overlay onClick={() => setShowPlayer(false)} {...restProps}>
           <Inner>
             <video id="netflix-player" controls>
-              <source src="/videos/bunny.mp4" type="video/mp4" />
+              <source src={bunny} type="video/mp4" />
             </video>
             <Close />
           </Inner>

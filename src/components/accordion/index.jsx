@@ -1,4 +1,6 @@
 import { useState, createContext, useContext } from "react";
+import closeIcon from "/images/icons/close-slim.png";
+import addIcon from "/images/icons/add.png";
 import {
   Container,
   Inner,
@@ -40,9 +42,9 @@ Accordion.Header = function AccordionHeader({ children, ...restProps }) {
     <Header onClick={() => setToggleShow(!toggleShow)} {...restProps}>
       {children}
       {toggleShow ? (
-        <img src="/images/icons/close-slim.png" alt="close accordion" />
+        <img src={closeIcon} alt="close accordion" />
       ) : (
-        <img src="/images/icons/add.png" alt="open accordion" />
+        <img src={addIcon} alt="open accordion" />
       )}
     </Header>
   );

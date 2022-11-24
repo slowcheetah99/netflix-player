@@ -6,6 +6,8 @@ import { Form } from "../components";
 import { useState, useContext } from "react";
 import { FirebaseContext } from "../context/firebase";
 import { UserContext } from "../context/userContext";
+import { motion } from "framer-motion";
+import { fadeOut } from "../constants/framerVariants";
 export default function Signup() {
   const [firstName, setFirstName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
@@ -44,7 +46,12 @@ export default function Signup() {
       .catch((error) => setError(error.message));
   };
   return (
-    <>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={fadeOut}
+    >
       <HeaderContainer>
         <Form>
           <Form.Title>Sign Up</Form.Title>
@@ -96,6 +103,6 @@ export default function Signup() {
         </Form>
       </HeaderContainer>
       <FooterContainer />
-    </>
+    </motion.div>
   );
 }

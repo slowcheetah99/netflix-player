@@ -10,3 +10,4 @@ export { default as Form } from "./form";
 export { default as Profiles } from "./profiles";
 export { default as Card } from "./card";
 export { default as Player } from "./player";
+export { default as Loader } from "./loader";

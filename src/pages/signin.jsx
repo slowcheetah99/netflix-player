@@ -4,6 +4,8 @@ import { FirebaseContext } from "../context/firebase";
 import { UserContext } from "../context/userContext";
 import { HeaderContainer } from "../containers/header";
 import Form from "../components/form";
+import { motion } from "framer-motion";
+import { fadeOut } from "../constants/framerVariants";
 import * as ROUTES from "../constants/routes";
 import { FooterContainer } from "../containers/footer";
 export default function Signin() {
@@ -35,7 +37,12 @@ export default function Signin() {
       .catch((error) => setError(error.message));
   };
   return (
-    <>
+    <motion.div
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={fadeOut}
+    >
       <HeaderContainer>
         <Form>
           <Form.Title>Sign In</Form.Title>
@@ -75,6 +82,6 @@ export default function Signin() {
         </Form>
       </HeaderContainer>
       <FooterContainer />
-    </>
+    </motion.div>
   );
 }
